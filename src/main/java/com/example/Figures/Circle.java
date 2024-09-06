@@ -3,7 +3,7 @@ package com.example.Figures;
 import java.lang.Math;
 
 public class Circle extends BaseFigure {
-    double radio;
+    public double radio;
     
     public Circle(double radio) {
         this.radio = radio;
