@@ -1,5 +1,7 @@
 package com.example.Figures;
 
+import java.lang.reflect.Field;
+
 public class Triangle extends BaseFigure {
     /*
      * Applications of Heron’s Formula
@@ -16,7 +18,7 @@ public class Triangle extends BaseFigure {
      */
     
     
-    double[] sides;
+    public double[] sides;
 
     public Triangle(double[] sides) {
         if (sides.length != 3){
@@ -43,6 +45,10 @@ public class Triangle extends BaseFigure {
             sum = sum + side;
         }
         return sum;
+    }
+    
+    public Field[] getFields() {
+        return Triangle.class.getFields();
     }
     
     private boolean triangleIsValid(double sideA, double sideB, double sideC){

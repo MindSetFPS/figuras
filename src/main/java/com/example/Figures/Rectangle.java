@@ -1,10 +1,12 @@
 package com.example.Figures;
 
+import java.lang.reflect.Field;
+
 public class Rectangle extends BaseFigure {
     
-    double base, height;
+    public double base, height;
 
-    Rectangle(double base, double height){
+    public Rectangle(double base, double height){
         this.base = base;
         this.height = height;
     }
@@ -17,5 +19,9 @@ public class Rectangle extends BaseFigure {
     @Override
     public double perimetro() {
         return (this.base * 2) + (this.height * 2);
+    }
+    
+    public Field[] getFields() {
+        return Rectangle.class.getFields();
     }
 }

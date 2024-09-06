@@ -1,8 +1,10 @@
 package com.example.Figures;
 
+import java.lang.reflect.Field;
+
 public class Square extends BaseFigure {
     
-    double side;
+    public double side;
     
     public Square(double side){
         this.side = side;
@@ -16,6 +18,10 @@ public class Square extends BaseFigure {
     @Override
     public double perimetro() {
         return side * 4;
+    }
+    
+    public Field[] getFields() {
+        return Square.class.getFields();
     }
     
 }

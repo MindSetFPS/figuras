@@ -3,60 +3,48 @@ package com.example;
 import com.example.Figures.*;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.lang.reflect.Field;
 
 public class App 
 {
     public static void main( String[] args )
     {
+        Circle circle = new Circle(13.9);
+        double[] sides = { 1.5, 2.3, 3.5};
+        Triangle triangle = new Triangle(sides);
+        Square square = new Square(12);
+        com.example.Figures.Rectangle rectangle = new com.example.Figures.Rectangle(23, 12);
+
         // Create empty window
         JFrame frame = new JFrame("Hello, world!");
 
         // Give window a size
-        frame.setSize(300, 200);
+        frame.setSize(600, 400);
         
         // End process. If not used, the commandline will be closed.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        Field[] fields = Circle.class.getFields();
+        // Field[] fields = Circle.class.getFields();
         
         // JLabel label = new JLabel("Hola mundo", SwingConstants.CENTER);
         // label.setFont(new Font("Arial", Font.BOLD, 24));
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(fields.length, 2));
-        // panel.add(label);
-        
-        for (Field field : fields) {
-            // Create a label for the field
-            JLabel fieldLabel = new JLabel(field.getName());
+        // Create a JPanel with GridBagLayout
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.NONE; // Prevent stretching
 
-            // Determine the type of the field and create appropriate input
-            JComponent inputField;
-            if (field.getType() == String.class) {
-                inputField = new JTextField(20);  // Text input for String
-            } else if (field.getType() == int.class) {
-                inputField = new JTextField(20);  // Text input for integers
-            } else if (field.getType() == boolean.class) {
-                inputField = new JCheckBox();  // Checkbox for boolean
-            } else {
-                inputField = new JTextField(20);  // Fallback to text input for other types
-            }
+        gbc.insets = new Insets(5, 5, 5, 5);  // Add padding between components
 
-            // Add the label and input to the panel
-            panel.add(fieldLabel);
-            panel.add(inputField);
-        }
-        
-        // JTextField num1Field = new JTextField(10);
-        // panel.add(num1Field);
+        circle.test(panel);
+        rectangle.test(panel);
+        triangle.test(panel);
+        square.test(panel);
+
+        panel.revalidate();
+        panel.repaint();
 
         frame.getContentPane().add(panel);
         frame.setLocationRelativeTo(null);
-        
         frame.setVisible(true);
-
     }
 }
