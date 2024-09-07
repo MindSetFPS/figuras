@@ -2,20 +2,20 @@ package com.example.Figures;
 
 import java.lang.reflect.Field;
 import java.lang.Math;
+import java.util.List;
 
 public class Circle extends BaseFigure {
     public double radio;
     
-    public Circle(double radio) {
-        this.radio = radio;
+    public Circle() {
     }
 
-    public double area() {
-        return Math.PI * radio;
+    public double area(List<Double> values) {
+        return Math.PI * values.get(0);
     }
 
-    public double perimetro() {
-        return 2 * Math.PI * radio;
+    public double perimetro(List<Double> values) {
+        return 2 * Math.PI * values.get(0);
     }
     
     public Field[] getFields(){

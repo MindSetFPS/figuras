@@ -1,6 +1,7 @@
 package com.example.Figures;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class Triangle extends BaseFigure {
     /*
@@ -18,33 +19,20 @@ public class Triangle extends BaseFigure {
      */
     
     
-    public double[] sides;
-
-    public Triangle(double[] sides) {
-        if (sides.length != 3){
-            throw new IllegalArgumentException("A triangle must have exactly three side");
-        }
-        
-        if (!triangleIsValid(sides[0], sides[1], sides[2])){
-            throw new IllegalArgumentException("The sum of two sides must be greater to the one left.");
-        }
-        this.sides = sides;
+    public double x, y, z;
+    
+    public Triangle(){
     }
 
     @Override
-    public double area() {
-        double s = perimetro() / 2;
-        return Math.sqrt( s * (s - sides[0]) * (s - sides[1]) * (s - sides[2]) );
+    public double area(List<Double> values) {
+        double s = perimetro(values) / 2;
+        return Math.sqrt( s * (s - values.get(0)) * (s - values.get(1)) * (s - values.get(2)) );
     }
 
     @Override
-    public double perimetro() {
-        double sum = 0;
-
-        for (double side: sides){
-            sum = sum + side;
-        }
-        return sum;
+    public double perimetro(List<Double> values) {
+        return values.get(0) + values.get(1) + values.get(2);
     }
     
     public Field[] getFields() {
